@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 app.use(express.logger());
 
-app.get('/', function(request, response) {
+app.get('/', function(reques 2t, response) {
   response.send('Hello World!');
 });
 
