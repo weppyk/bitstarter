@@ -1,7 +1,7 @@
 var fs = require('fs');
 var indexhtml = fs.readFileSync('index.html');
 var indexhtmls = indexhtml.toString('utf8');
-//var express = require('express');
+var express = require('express');
 var app = express();
 app.use(express.logger());
 
