@@ -7,8 +7,6 @@ app.use(express.logger());
 
 app.get('/', function(request, response) {
   response.send(indexhtmls);
-
-//gg
 });
 
 var port = process.env.PORT || 5000;
