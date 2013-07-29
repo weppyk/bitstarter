@@ -30,22 +30,9 @@ var getUrl = function(urlfile, callback) {
     
 
 var urlHtmlFile = function(urlfile, callback) {
-      getUrl(urlfile, function(linka) {
-                              //htmlstring=linka;
+   getUrl(urlfile, function(linka) {
      callback(cheerio.load(linka));
-//     console.log(cheerio.load(linka));
-                              //var cheriohtml=cherio.load(htmlstring);
-     });
- 
-                           //   return cheerio.load(htmlstring); //getUrl(urlfile, function(linka) {
-    
-//	htmlstring = linka;
-//	console.log(htmlstring);
-//        callback(htmlstring);
-//    }
-//   ));
-//  console.log(htmlstring);
-//  return htmlstring;
+   });
  };
 
 // konec
@@ -58,26 +45,19 @@ var loadChecks = function(checksfile) {
     return JSON.parse(fs.readFileSync(checksfile)); //load checksfile into function JSON.parse - convert to array
 };
 
-var checkHtmlFile = function(urlfile, htmlfile, checksfile) {
-        urlHtmlFile(urlfile, function(prevod) {
-//	   console.log(prevod);
-// }           
-// );
-//    console.log(urlfile, htmlfile, checksfile);
-
-//       $ = prevod;     
-//     $ = cheerioHtmlFile(htmlfile);
-     if(urlfile ==='0'){$ = cheerioHtmlFile(htmlfile);}
-     else {$=prevod;};
-
-    var checks = loadChecks(checksfile).sort();
-    var out = {};
-    for(var ii in checks) { 
+var checkHtmlFile = function(urlfile, htmlfile, checksfile, callback) {
+    urlHtmlFile(urlfile, function(prevod) {
+      if(urlfile ==='0'){$ = cheerioHtmlFile(htmlfile);}
+      else {$=prevod;};
+      var checks = loadChecks(checksfile).sort();
+      var out = {};
+      for(var ii in checks) { 
 	var present = $(checks[ii]).length > 0; //if tag is not in html file, retun 0, otherwise 1
-       console.log(ii,checks[ii],present);
+        out[checks[ii]]= present;
     }
-    return out;
-});
+    callback(out);
+  });
+
 };
 
 var clone = function(fn) {
@@ -94,9 +74,11 @@ if(require.main == module) {
        .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
        .option('-u, --url <url_file>', 'URL path like https://.....',URLFILE_DEFAULT)
        .parse(process.argv);
-    var checkJson = checkHtmlFile(program.url, program.file, program.checks);
+    // var checkJson = 
+    checkHtmlFile(program.url, program.file, program.checks,function(checkJson){
     var outJson = JSON.stringify(checkJson, null, 4);
     console.log(outJson);
+    });
 } else {
     exports.checkHtmlFile = checkHtmlFile;
 }
