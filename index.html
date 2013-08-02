@@ -16,7 +16,32 @@
         body {
           padding-top: 60px
         }
+/* ------------------- 4 Actions ----------------- */
+        .linediv-l {
+          border-right: 1px white solid;
+        }
+        .linediv-r {
+          border-left: 1px white solid;
+        }
+/* ....................4 Actions ................. */
       }
+
+/* ---------------------4 Actions -------------------- */
+      /* Landscape phones and down */
+      @media (max-width:480px) {
+        .copy {
+          padding: 2.5% 10%;
+        }
+        .linediv-l {
+          border-bottom: 1px white solid;
+        }
+        .linediv-r {
+          border-top: 1px white solid;
+        }
+      }
+/* ..................4 Actions ............................ */
+
+/* ----------------------- 2 ------------------------------ */
       /* All form factors */
 
       /* Main body and headings */
@@ -36,6 +61,8 @@
         font-size: 18px;
         line-heiht: 24px;
       }
+/*............................................................*/
+
 
 /* 3,4 ---------------------------------3.,4. Video, Actions------------------------------------- */
       /* Video pitch and Action */
@@ -107,7 +134,10 @@
 	<div class="span5 offset1 video">
 	  <img class="img-polaroid" src="http://placehold.it/480x300">
 	</div>
+<!--...........................3. Video place holder.............................................-->
 
+
+<!----------------------------------- 4. Actions ------------------------------------------------->
 	<!-- We define a new 'actions' div to contain statistics, order, and share buttons. -->
 	<div class="span5 actions">
 	  <div class="span8 offset2">
@@ -120,10 +150,19 @@
 		  <h3>1000</h3> <p>backers</p>
 		</div>
 	      </div>
-<!-- end ------------------------3.Video place holder ---------------------------------------->	      
-
+	      <div class="span4">
+		<div class="linediv-c">
+		  <h3>$6000</h3> <p>of $10,000</p>
+		</div>
+	      </div>
+	      <div class="span4">
+		<div class="linediv-r">
+		  <h3>10</h3> <p>days left</p>
+		</div>
+	      </div>
 	    </div>
 	  </div>
+<!--....................................4.Actions bar.............................................>
 	</div>
       </div>
     </div>
