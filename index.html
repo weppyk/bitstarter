@@ -98,10 +98,16 @@
         color: #ccccff;
       }
       div.addthis_toolbox {
-      width:180px;
-      margin: 0 auto;
+        width:180px;
+        margin: 0 auto;
       }
+      .row-fluid .offset3:first-child {
+        width: 100%;
+        margin-left: 9px;
+      }
+
     </style>
+
 
 <script type="text/javascript">
 
@@ -204,9 +210,11 @@
           </div>
           <div class="row-fluid">
           <div class="span6 offset3 order">
-            <!-- Standard Bootstrap button. -->
+	    <a class="coinbase-button" data-button-style="custom_large" data-button-text="Preorder with Bitcoin" data-code="d9cea2bb66db549f0f14f3cffcfc5a22" href="https://coinbase.com/checkouts/d9cea2bb66db549f0f14f3cffcfc5a22">Preorder with Bitcoin</a><script src="https://coinbase.com/assets/button.js" type="text/javascript"></script>
+           <!-- Standard Bootstrap button. -->
             <!-- http://twitter.github.io/bootstrap/base-css.html#buttons -->
-            <button class="btn btn-success btn-large">Preorder</button>
+            <!-- <button class="btn btn-success btn-large">Preorder</button>-->
+
           </div>
           </div>
           <div class="row-fluid">
